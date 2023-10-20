@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
+http:
+  routers:
+    proxydev-router:
+      rule: 'Host(`proxydev.{{ env "PROXY_HOSTNAME" }}`)'
+      service: proxydev-service
+      middlewares:
+        - authelia
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: cloudflare
+
+  services:
+    proxydev-service:
+      loadBalancer:
+        servers:
+          - url: "http://proxy:8000"

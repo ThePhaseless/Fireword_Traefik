@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
+http:
+  middlewares:
+    authelia:
+      # use forwardAuth if PROXY env is set to true
+      {{ if eq (env "PROXY") "true" }}
+      forwardAuth:
+        address: http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.{{ env "PROXY_HOSTNAME" }}%2F
+        trustForwardHeader: true
+        authResponseHeaders:
+          - "Remote-User"
+          - "Remote-Groups"
+          - "Remote-Email"
+          - "Remote-Name"
+  routers:
+    authelia-router:
+      rule: 'Host(`auth.{{ env "PROXY_HOSTNAME" }}`)'
+      service: authelia-service
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: cloudflare
+
+  services:
+    authelia-service:
+      loadBalancer:
+        servers:
+          - url: "http://authelia:9091"
+      {{ else }}
+      # use redirectScheme if PROXY env is set to false
+      redirectScheme:
+        scheme: https

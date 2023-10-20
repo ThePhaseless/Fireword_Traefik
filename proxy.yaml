@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
+http:
+  routers:
+    dashboard-router:
+      rule: 'Host(`proxy.{{ env "PROXY_HOSTNAME" }}`)'
+      service: dashboard-service
+      middlewares:
+        - authelia
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: '{{ env "PROXY_HOSTNAME" }}'
+            sans:
+              - '*.{{ env "PROXY_HOSTNAME" }}'
+  services:
+    dashboard-service:
+      loadBalancer:
+        servers:
+          - url: "http://traefik:8080"

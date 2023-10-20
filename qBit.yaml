@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
+http:
+  routers:
+    qbt-router:
+      rule: 'Host(`qbt.{{ env "PROXY_HOSTNAME" }}`)'
+      service: qbt-service
+      middlewares:
+        - authelia
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: cloudflare
+
+  services:
+    qbt-service:
+      loadBalancer:
+        servers:
+          - url: 'http://{{ env "TARGET_IP"  }}:3434'

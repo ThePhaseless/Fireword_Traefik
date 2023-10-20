@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
+http:
+  routers:
+    scan-router:
+      rule: 'Host(`scan.{{ env "PROXY_HOSTNAME" }}`)'
+      service: scan-service
+      middlewares:
+        - authelia
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: cloudflare
+
+  services:
+    scan-service:
+      loadBalancer:
+        servers:
+          - url: 'http://{{ env "TARGET_IP"  }}:89'
