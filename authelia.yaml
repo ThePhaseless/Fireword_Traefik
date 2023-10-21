@@ -28,7 +28,6 @@ http:
         servers:
           - url: "http://authelia:9091"
 {{else}}
-    redirectScheme:
-        scheme: https
-        permanent: true
+      contentType:
+        autoDetect: true
 {{end}}
