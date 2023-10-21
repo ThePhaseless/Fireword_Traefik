@@ -14,4 +14,4 @@ http:
     dashboard-service:
       loadBalancer:
         servers:
-          - url: "http://{{ env HOST_IP }}:8090"
+          - url: 'http://{{ env "HOST_IP" }}:8090'
