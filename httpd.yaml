@@ -1,16 +1,16 @@
 # yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
 http:
   routers:
-    http-router:
+    httpd-router:
       rule: 'Host(`{{ env "PUBLIC_HOSTNAME" }}`)'
-      service: http-service
+      service: httpd-service
       entryPoints:
         - websecure
       tls:
         certResolver: cloudflare
 
   services:
-    http-service:
+    httpd-service:
       loadBalancer:
         servers:
           - url: 'http://{{ env "TARGET_IP"  }}:81'
