@@ -2,7 +2,7 @@
 http:
   routers:
     print-router:
-      rule: 'Host(`print.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`print.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: print-service
       middlewares:
         - authelia

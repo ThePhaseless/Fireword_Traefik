@@ -2,7 +2,7 @@
 http:
   routers:
     prowlarr-router:
-      rule: 'Host(`prowlarr.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`prowlarr.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: prowlarr-service
       middlewares:
         - authelia

@@ -2,7 +2,7 @@
 http:
   routers:
     scan-router:
-      rule: 'Host(`scan.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`scan.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: scan-service
       middlewares:
         - authelia

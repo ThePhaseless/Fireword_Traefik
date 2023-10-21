@@ -2,7 +2,7 @@
 http:
   routers:
     adguard-router:
-      rule: 'Host(`adguard.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`adguard.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: adguard-service
       middlewares:
         - authelia

@@ -2,7 +2,7 @@
 http:
   routers:
     sonarr-router:
-      rule: 'Host(`sonarr.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`sonarr.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: sonarr-service
       middlewares:
         - authelia

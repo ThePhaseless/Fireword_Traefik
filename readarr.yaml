@@ -2,7 +2,7 @@
 http:
   routers:
     readarr-router:
-      rule: 'Host(`readarr.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`readarr.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: readarr-service
       middlewares:
         - authelia

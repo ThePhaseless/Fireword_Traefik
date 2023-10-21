@@ -2,7 +2,7 @@
 http:
   routers:
     dashboard-router:
-      rule: 'Host(`proxy.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`proxy.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: dashboard-service
       middlewares:
         - authelia
@@ -11,9 +11,9 @@ http:
       tls:
         certResolver: cloudflare
         domains:
-          - main: '{{ env "HOSTNAME" }}'
+          - main: '{{ env "PUBLIC_HOSTNAME" }}'
             sans:
-              - '*.{{ env "HOSTNAME" }}'
+              - '*.{{ env "PUBLIC_HOSTNAME" }}'
   services:
     dashboard-service:
       loadBalancer:

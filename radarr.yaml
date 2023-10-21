@@ -2,7 +2,7 @@
 http:
   routers:
     radarr-router:
-      rule: 'Host(`radarr.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`radarr.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: radarr-service
       middlewares:
         - authelia

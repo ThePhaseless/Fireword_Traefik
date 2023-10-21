@@ -2,7 +2,7 @@
 http:
   routers:
     dev-router:
-      rule: 'Host(`dev.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`dev.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: dev-service
       middlewares:
         - authelia

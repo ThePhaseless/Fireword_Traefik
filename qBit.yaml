@@ -2,7 +2,7 @@
 http:
   routers:
     qbt-router:
-      rule: 'Host(`qbt.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`qbt.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: qbt-service
       middlewares:
         - authelia

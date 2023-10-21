@@ -2,7 +2,7 @@
 http:
   routers:
     files-router:
-      rule: 'Host(`files.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`files.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: adguard-service
       middlewares:
         - authelia

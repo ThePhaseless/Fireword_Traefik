@@ -2,7 +2,7 @@
 http:
   routers:
     jellyseerr-router:
-      rule: 'Host(`add.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`add.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: jellyseerr-service
       entryPoints:
         - websecure

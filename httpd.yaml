@@ -2,7 +2,7 @@
 http:
   routers:
     http-router:
-      rule: 'Host(`{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`{{ env "PUBLIC_HOSTNAME" }}`)'
       service: http-service
       entryPoints:
         - websecure

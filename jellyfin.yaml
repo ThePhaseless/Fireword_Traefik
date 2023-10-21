@@ -2,7 +2,7 @@
 http:
   routers:
     jellyfin-router:
-      rule: 'Host(`watch.{{ env "HOSTNAME" }}`)'
+      rule: 'Host(`watch.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: jellyfin-service
       entryPoints:
         - websecure
