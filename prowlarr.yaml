@@ -2,7 +2,7 @@
 http:
   routers:
     prowlarr-router:
-      rule: 'Host(`prowlarr.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`prowlarr.{{ env "HOSTNAME" }}`)'
       service: prowlarr-service
       middlewares:
         - authelia

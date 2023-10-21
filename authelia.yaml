@@ -6,7 +6,7 @@ http:
 {{if $proxy}}
       # use forwardAuth if PROXY env is set to true
       forwardAuth:
-        address: http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.{{ env "PROXY_HOSTNAME" }}%2F
+        address: http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.{{ env "HOSTNAME" }}%2F
         trustForwardHeader: true
         authResponseHeaders:
           - "Remote-User"
@@ -15,7 +15,7 @@ http:
           - "Remote-Name"
   routers:
     authelia-router:
-      rule: 'Host(`auth.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`auth.{{ env "HOSTNAME" }}`)'
       service: authelia-service
       entryPoints:
         - websecure

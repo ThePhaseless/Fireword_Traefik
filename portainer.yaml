@@ -2,7 +2,7 @@
 http:
   routers:
     portainer-router:
-      rule: 'Host(`portainer.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`portainer.{{ env "HOSTNAME" }}`)'
       service: portainer-service
       middlewares:
         - authelia

@@ -2,7 +2,7 @@
 http:
   routers:
     dev-router:
-      rule: 'Host(`dev.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`dev.{{ env "HOSTNAME" }}`)'
       service: dev-service
       middlewares:
         - authelia

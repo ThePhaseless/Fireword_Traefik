@@ -2,7 +2,7 @@
 http:
   routers:
     bazarr-router:
-      rule: 'Host(`bazarr.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`bazarr.{{ env "HOSTNAME" }}`)'
       middlewares:
         - authelia
       service: bazarr-service

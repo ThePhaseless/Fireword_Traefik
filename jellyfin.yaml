@@ -2,7 +2,7 @@
 http:
   routers:
     jellyfin-router:
-      rule: 'Host(`watch.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`watch.{{ env "HOSTNAME" }}`)'
       service: jellyfin-service
       entryPoints:
         - websecure

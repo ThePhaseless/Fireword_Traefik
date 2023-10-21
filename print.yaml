@@ -2,7 +2,7 @@
 http:
   routers:
     print-router:
-      rule: 'Host(`print.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`print.{{ env "HOSTNAME" }}`)'
       service: print-service
       middlewares:
         - authelia

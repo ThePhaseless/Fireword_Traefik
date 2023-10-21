@@ -2,7 +2,7 @@
 http:
   routers:
     dashboard-router:
-      rule: 'Host(`proxy.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`proxy.{{ env "HOSTNAME" }}`)'
       service: dashboard-service
       middlewares:
         - authelia
@@ -11,11 +11,11 @@ http:
       tls:
         certResolver: cloudflare
         domains:
-          - main: '{{ env "PROXY_HOSTNAME" }}'
+          - main: '{{ env "HOSTNAME" }}'
             sans:
-              - '*.{{ env "PROXY_HOSTNAME" }}'
+              - '*.{{ env "HOSTNAME" }}'
   services:
     dashboard-service:
       loadBalancer:
         servers:
-          - url: "http://traefik:8080"
+          - url: "http://{{ env PROXY_IP }}:8080"

@@ -2,7 +2,7 @@
 http:
   routers:
     sonarr-router:
-      rule: 'Host(`sonarr.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`sonarr.{{ env "HOSTNAME" }}`)'
       service: sonarr-service
       middlewares:
         - authelia

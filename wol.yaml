@@ -2,7 +2,7 @@
 http:
   routers:
     wol-router:
-      rule: 'Host(`wol.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`wol.{{ env "HOSTNAME" }}`)'
       service: wol-service
       middlewares:
         - authelia

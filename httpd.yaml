@@ -2,7 +2,7 @@
 http:
   routers:
     http-router:
-      rule: 'Host(`{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`{{ env "HOSTNAME" }}`)'
       service: http-service
       entryPoints:
         - websecure

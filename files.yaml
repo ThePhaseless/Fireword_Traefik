@@ -2,7 +2,7 @@
 http:
   routers:
     files-router:
-      rule: 'Host(`files.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`files.{{ env "HOSTNAME" }}`)'
       service: adguard-service
       middlewares:
         - authelia

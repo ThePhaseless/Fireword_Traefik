@@ -2,7 +2,7 @@
 http:
   routers:
     radarr-router:
-      rule: 'Host(`radarr.{{ env "PROXY_HOSTNAME" }}`)'
+      rule: 'Host(`radarr.{{ env "HOSTNAME" }}`)'
       service: radarr-service
       middlewares:
         - authelia
