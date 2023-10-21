@@ -18,4 +18,4 @@ http:
     dashboard-service:
       loadBalancer:
         servers:
-          - url: "http://{{ env PROXY_IP }}:8080"
+          - url: 'http://{{ env "PROXY_IP" }}:8080'
