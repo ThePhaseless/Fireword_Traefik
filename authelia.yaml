@@ -2,8 +2,9 @@
 http:
   middlewares:
     authelia:
+{{ $proxy := env "PROXY" }}
+{{if $proxy}}
       # use forwardAuth if PROXY env is set to true
-{{ if eq (env "PROXY") "true" }}
       forwardAuth:
         address: http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.{{ env "PROXY_HOSTNAME" }}%2F
         trustForwardHeader: true
@@ -26,7 +27,8 @@ http:
       loadBalancer:
         servers:
           - url: "http://authelia:9091"
-{{ else }}
-      # use redirectScheme if PROXY env is set to false
-      redirectScheme:
+{{else}}
+    redirectScheme:
         scheme: https
+        permanent: true
+{{end}}
