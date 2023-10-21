@@ -15,4 +15,4 @@ http:
     proxydev-service:
       loadBalancer:
         servers:
-          - url: "http://proxy:8000"
+          - url: 'http://{{ env "proxy" }}:8000'
