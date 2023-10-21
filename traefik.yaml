@@ -2,7 +2,7 @@
 http:
   routers:
     traefik-router:
-      rule: 'Host(`proxy.{{ env "PUBLIC_HOSTNAME" }}`)'
+      rule: 'Host(`traefik.{{ env "PUBLIC_HOSTNAME" }}`)'
       service: traefik-service
       middlewares:
         - authelia
