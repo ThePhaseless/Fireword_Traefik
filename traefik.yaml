@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
 http:
   routers:
-    dashboard-router:
+    traefik-router:
       rule: 'Host(`proxy.{{ env "PUBLIC_HOSTNAME" }}`)'
-      service: dashboard-service
+      service: traefik-service
       middlewares:
         - authelia
       entryPoints:
@@ -11,7 +11,7 @@ http:
       tls:
         certResolver: cloudflare
   services:
-    dashboard-service:
+    traefik-service:
       loadBalancer:
         servers:
           - url: 'http://{{ env "HOST_IP" }}:8090'
