@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://json.schemastore.org/traefik-v2-file-provider.json
 http:
   routers:
-    files-router:
+    games-router:
       rule: 'Host(`games.{{ env "PUBLIC_HOSTNAME" }}`)'
-      service: adguard-service
+      service: games-service
       middlewares:
         - authelia
       entryPoints:
@@ -12,7 +12,7 @@ http:
         certResolver: cloudflare
 
   services:
-    files-service:
+    games-service:
       loadBalancer:
         servers:
           - url: 'http://{{ env "TARGET_IP"  }}:8080'
