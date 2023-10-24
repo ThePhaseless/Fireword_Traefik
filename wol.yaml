@@ -15,4 +15,4 @@ http:
     wol-service:
       loadBalancer:
         servers:
-          - url: 'http://{{ env "TARGET_IP"  }}:8089'
+          - url: 'http://{{ env "TARGET_IP"  }}:1234'
